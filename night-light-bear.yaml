@@ -22,8 +22,21 @@ logger:
 light:
   - platform: neopixelbus
     variant: WS2812
-    pin: GPIO2  # D4
+    pin: GPIO2 # D4
     num_leds: 3
     name: "Night Light"
     id: led_light
-    method: esp8266_uart  # Using UART instead of DMA
+    method: esp8266_uart # Using UART instead of DMA
+    gamma_correct: 0.8
+    default_transition_length: 3000ms
+    restore_mode: ALWAYS_OFF
+    on_turn_on:
+      then:
+        - light.turn_on:
+            id: led_light
+            transition_length: 3000ms
+    on_turn_off:
+      then:
+        - light.turn_off:
+            id: led_light
+            transition_length: 3000ms

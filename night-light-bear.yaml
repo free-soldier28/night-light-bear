@@ -34,6 +34,13 @@ light:
     gamma_correct: 0.8
     default_transition_length: 3000ms
     restore_mode: ALWAYS_OFF
+    effects:
+      - addressable_rainbow:
+      - addressable_color_wipe:
+      - addressable_scan:
+      - addressable_twinkle:
+      - addressable_fireworks:
+      - addressable_flicker:
     on_turn_on:
       then:
         - light.turn_on:
